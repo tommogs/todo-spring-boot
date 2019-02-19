@@ -36,12 +36,12 @@ pipeline {
                         }
                     }
                 }
-               # stage('Code Analysis') {
-                   # steps {
-                    #    gradlew('sonarqube')
-                #    }
-               # }
-           # }
+               // stage('Code Analysis') {
+                   // steps {
+                    //    gradlew('sonarqube')
+                //    }
+               // }
+           // }
         }
         stage('Assemble') {
             steps {
