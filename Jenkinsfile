@@ -38,11 +38,7 @@ pipeline {
                 }
                 stage('Code Analysis') {
                     steps {
-                        gradlew('sonarqube')\
-  -Dsonar.projectKey=tommogs_todo-spring-boot \
-  -Dsonar.organization=tommogs-github \
-  -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=5a10241e0791e11647eb3e1b099901ffaab54c8a
+                        gradlew('sonarqube')
                     }
                 }
             }
