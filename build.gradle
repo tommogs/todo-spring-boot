@@ -1,7 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '1.5.6.RELEASE
 }
-}
 
 apply plugin: 'war'
 
