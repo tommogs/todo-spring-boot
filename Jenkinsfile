@@ -36,12 +36,12 @@ pipeline {
                         }
                     }
                 }
-               // stage('Code Analysis') {
-                   // steps {
-                    //    gradlew('sonarqube')
-                //    }
-               // }
-           // }
+                stage('Code Analysis') {
+                    steps {
+                        gradlew('sonarqube')
+                    }
+                }
+            }
         }
         stage('Assemble') {
             steps {
@@ -56,16 +56,16 @@ pipeline {
                 }
             }
         }
-       // stage('Deploy to Production') {
-        //    environment {
-         //       HEROKU_API_KEY = credentials('HEROKU_API_KEY')
-         //  }
-         //  steps {
-          //      unstash 'app'
-         //       gradlew('deployHeroku')
-         //  }
-       // }
-  //  }
+        stage('Deploy to Production') {
+            environment {
+                HEROKU_API_KEY = credentials('HEROKU_API_KEY')
+           }
+           steps {
+                unstash 'app'
+                gradlew('deployHeroku')
+           }
+        }
+    }
     post {
         failure {
             mail to: 'benjamin.muschko@gmail.com', subject: 'Build failed', body: 'Please fix!'
@@ -76,4 +76,3 @@ pipeline {
 def gradlew(String... args) {
     sh "./gradlew ${args.join(' ')} -s"
 }
-    }
